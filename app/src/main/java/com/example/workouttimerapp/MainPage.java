@@ -10,6 +10,8 @@ public class MainPage implements IMainPage {
     private EditText timeText;
     private TextView countdownText;
     private ProgressBar progressBar;
+    private EditText roundText;
+    private EditText resetText;
     private PageData data;
     private Boolean clickFlag;
 
@@ -44,15 +46,22 @@ public class MainPage implements IMainPage {
     public void setProgressBar(ProgressBar progressBar) {
         this.progressBar = progressBar;
     }
+    public void setRoundText(EditText roundText) {
+        this.roundText = roundText;
+    }
+    public void setResetText(EditText resetText) {
+        this.resetText = resetText;
+    }
 
     @Override
     public void start(int second) {
-        data.start(second * 1000);
+        data.newTimer(second * 1000);
     }
 
     @Override
     public void end() {
         data.end();
+
     }
 
     public void setProgressbarValue(int value){
@@ -69,7 +78,11 @@ public class MainPage implements IMainPage {
         this.controlBtn.setOnClickListener(view -> {
             int targetedTime = 0;
             try{
-                targetedTime =Integer.parseInt(timeText.getText().toString());
+                targetedTime = Integer.parseInt(timeText.getText().toString());
+                this.data.setTargetedTime(targetedTime);
+                this.data.setRound(Integer.parseInt(roundText.getText().toString()));
+                this.data.setResetTime(Integer.parseInt(resetText.getText().toString()));
+
             }catch (NumberFormatException e){
                 countdownText.setText(R.string.text_invalid);
             }
@@ -94,11 +107,13 @@ public class MainPage implements IMainPage {
         this.data = new PageData(this);
     }
 
-    MainPage(Button controlBtn, EditText timeText, TextView countdownText, ProgressBar progressBar){
+    MainPage(Button controlBtn, EditText timeText, TextView countdownText, EditText roundText, EditText resetText, ProgressBar progressBar){
         setControlBtn(controlBtn);
         setCountdownText(countdownText);
         setTimeText(timeText);
         setProgressBar(progressBar);
+        setRoundText(roundText);
+        setResetText(resetText);
         initContent();
         initCallbacks();
         initData();

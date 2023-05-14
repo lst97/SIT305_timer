@@ -32,7 +32,7 @@
             android:textSize="34sp" />
 
         <Space
-            android:layout_width="match_parent"
+            android:layout_width="263dp"
             android:layout_height="30dp"
             android:layout_weight="1" />
 
@@ -42,6 +42,25 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:gravity="center"
+            android:hint="time"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/pharse_input"
+            android:layout_width="262dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="round"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/preriod_input"
+            android:layout_width="261dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="reset time"
             android:inputType="number" />
 
         <Space

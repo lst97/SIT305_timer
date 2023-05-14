@@ -44,7 +44,7 @@ public class PageData {
             @Override
             public void onTick(long millisUntilFinished) {
                 long secondsRemaining = millisUntilFinished / 1000;
-                int percentage = Math.abs(100 - (int)((millisUntilFinished * 100.0f / targetedTime )));
+                int percentage = (int) (100 - (secondsRemaining * 100 / targetedTime));
                 mainPage.setProgressbarValue(percentage);
                 mainPage.getCountdownText().setText(secondsRemaining + " S");
             }
